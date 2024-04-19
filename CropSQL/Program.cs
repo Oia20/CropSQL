@@ -1,3 +1,4 @@
+//added comment to test deploy
 using CropSQL;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
