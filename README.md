@@ -3,6 +3,16 @@ A game where users learn sql by managing a farm.
 
 The flow of the SQL learning game:
 
+Color Palette:
+
+Glade Green: #5e8d61
+Olivine: #a2b780
+Cream Can: #f4d35d
+Apricot: #e8a073
+Matrix: #b0545a
+
+
+
 1. Hello welcome to CropSQL, in this game you will use SQL commands and queries to build and manage your farm.
 
 2. Let's start by creating your farm with "CREATE DATABASE" followed by the name of your farm. ex: CREATE DATABASE myFarm; don't forget the semi-colon, this is how sql knows where your command ends.
@@ -17,6 +27,7 @@ CropSQL> CREATE TABLE Crops (
         Crop varchar(20),
         Amount int
         );
+
 5. Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. "ALTER TABLE tableName" followed by ADD columnName datatype
 
 CropSQL> ALTER TABLE Crops
@@ -30,5 +41,6 @@ CropSQL> SELECT * FROM Crops;
 in SQL we do this with the "INSERT INTO" command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case
 we want to modify all columns "INSERT INTO Crops (Crop, Amount, Worth)" Then we use the "VALUES ()" command to insert into columns
 Let's plant 5 carrots at a Worth of 2.
+
 CropSQL> INSERT INTO Crops (Crop, Amount, Worth)
 CropSQL> VALUES (Carrot, 5, 2);

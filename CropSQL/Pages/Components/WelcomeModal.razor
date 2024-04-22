@@ -1,0 +1,28 @@
+@if (showModal)
+{
+    <div class="modal-overlay">
+    <div class="modalBack">
+        <div class="modal-header">
+            <h2>Hello, Welcome to CropSQL!</h2>
+        </div>
+        <div class="modal-body">
+            <!-- Modal content goes here -->
+            <p>In this game you will learn and use SQL commands and queries to build and manage your farm.</p>
+        </div>
+            <button class="continue-but" @onclick="CloseModal">Continue</button>
+
+    </div>
+    
+</div>
+}
+
+
+@code {
+    private bool showModal = true; // Initially set to true to show the modal
+
+    private void CloseModal()
+    {
+        showModal = false; // Set showModal to false to close the modal
+    }
+
+}
