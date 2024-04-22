@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CropSQL",
   "resources": {
-    "hash": "sha256-z1w4kK1GPdD2Iaue3jihtTn5Q2CzBlPfIyKpwoK7XrI=",
+    "hash": "sha256-noOdzrNtNnGc7TnOGfUK4Ru0S+xh0Zt1JiWQIE+ot5w=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.6vlmefabfv.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "CropSQL.wasm": "sha256-fK5P2QrOa4PA8UBDWr8v+QXgj9Ogem0cG7gN3DWJ7P8=",
+      "CropSQL.wasm": "sha256-tlKyOtzXEwBTcO/+AQhjkYMcH2lDJ2gb7xz3E5G3CLM=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-cIyPjHUS8ZYf/YRSIm4L5PkkwbRtYQ9f+C0CNxPjtME=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-DUvpzktySFpUWNVEp87C8FbAJYUD6qHu7a6hL+tBSl4=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-kZSJV9ON9UL924dyAnAeoFHZXExv5A/OCxTHlMc+3fQ=",
