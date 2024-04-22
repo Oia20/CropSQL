@@ -22,8 +22,13 @@ CropSQL> CREATE TABLE Crops (
 CropSQL> ALTER TABLE Crops
 CropSQL> ADD Worth int;
 
-6. Lovely now lets view our Crops table! do this with the SELECT command followed by * which functions as a select all, then FROM followed by the tables name.
+6. Lovely now lets view our Crops table! do this with the "SELECT" command followed by "*" which functions as a select all, then "FROM" followed by the tables name.
 
 CropSQL> SELECT * FROM Crops;
 
 7. Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! 
+in SQL we do this with the "INSERT INTO" command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case
+we want to modify all columns "INSERT INTO Crops (Crop, Amount, Worth)" Then we use the "VALUES ()" command to insert into columns
+Let's plant 5 carrots at a Worth of 2.
+CropSQL> INSERT INTO Crops (Crop, Amount, Worth)
+CropSQL> VALUES (Carrot, 5, 2);
