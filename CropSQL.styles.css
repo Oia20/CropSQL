@@ -1,3 +1,34 @@
+/* /Pages/Components/Header.razor.rz.scp.css */
+.header-1[b-dgckrwchi2] {
+    position: relative; /* Make the container a positioned parent */
+    width: 100%;
+    height: 75px;
+    background-image: linear-gradient(140deg, #5e8d61,#5e8d61 );
+    border-bottom: 1px solid;
+    border-color: #302910;
+}
+
+
+.carrot-img[b-dgckrwchi2] {
+    height:100px;
+    width: 150px;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.github[b-dgckrwchi2] {
+    position: absolute; /* Position the element absolutely */
+    top: 50%; /* Move the element 50% down from the top of the container */
+    right: 0; /* Align the element to the right */
+    transform: translateY(-20%); /* Adjust for the height of the element */
+    margin-right: 25px;
+    font-size: 1.5em;
+}
+
+a[b-dgckrwchi2] {
+    color:darkgreen;
+}
 /* /Pages/Components/WelcomeModal.razor.rz.scp.css */
 /* MyModalComponent.razor.css */
 
