@@ -1,0 +1,42 @@
+@inject IJSRuntime JSRuntime
+
+<div class="terminal">
+    <div class="output" @ref="outputRef">
+        @foreach (var line in terminalOutput)
+        {
+            <div class="outText">@line</div>
+        }
+    </div>
+    <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
+</div>
+
+@code {
+    private List<string> terminalOutput = new List<string>();
+    private string currentInput = "";
+
+    private ElementReference outputRef;
+    private ElementReference inputRef;
+
+    private async Task HandleInput(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            // Get the value of the input field using JavaScript interop
+            currentInput = await JSRuntime.InvokeAsync<string>("getInputValue", inputRef);
+
+            ExecuteCommand(currentInput);
+            currentInput = ""; // Clear the input field
+        }
+    }
+
+    private void ExecuteCommand(string command)
+    {
+        // Process command here
+        // For demonstration purposes, just echo back the command
+        terminalOutput.Add("CropSQL> " + command);
+        terminalOutput.Add("Result: " + command);
+
+        // Notify Blazor that the component's state has changed
+        StateHasChanged();
+    }
+}
