@@ -2,8 +2,9 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100vh;
-    background-color: #a2b780;
+    height:100vh;
+    background-image: linear-gradient(180deg, #a2b780, #5e8d61);
+
 }
 
 h1:focus {
