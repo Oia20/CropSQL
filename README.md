@@ -13,7 +13,7 @@ Matrix: #b0545a
 
 
 
-1. Hello welcome to CropSQL, in this game you will use SQL commands and queries to build and manage your farm.
+1. Hello welcome to CropSQL, in this game you will learn and use SQL commands and queries to build and manage your farm.
 
 2. Let's start by creating your farm with "CREATE DATABASE" followed by the name of your farm. ex: CREATE DATABASE myFarm; don't forget the semi-colon, this is how sql knows where your command ends.
 
