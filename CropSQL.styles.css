@@ -4,7 +4,7 @@
     width: 100%;
     height: 75px;
     background-image: linear-gradient(140deg, #5e8d61,#5e8d61 );
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
     border-color: #302910;
 }
 
@@ -30,19 +30,38 @@ a[b-dgckrwchi2] {
     color:darkgreen;
 }
 /* /Pages/Components/Home.razor.rz.scp.css */
-.content1[b-umpn6neeij] {
-    width: fit-content;
+.container123[b-umpn6neeij] {
+    display: flex;
+    flex-direction: row;
+    width: 100%
+}
+/* /Pages/Components/Prompt.razor.rz.scp.css */
+.prompt[b-g6znmiomj0] {
+    background-image: linear-gradient(140deg, #a2b780, #5e8d61);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increased shadow */
+    border: 2px solid #5e8d61; /* Solid border */
+    margin: 5px;
+    width:80%;
+    height:fit-content;
+    margin:auto;
+    margin-top: 5px;
+    margin-bottom:5px;
 }
 /* /Pages/Components/SideBarNav.razor.rz.scp.css */
 /* SidebarNav.razor.css */
 .sidebar[b-g2nh69mhfi] {
     position:relative;
     left: 0;
-    height:90vh;
+    top:0;
+    height:100vh;
     width: 200px;
-    background-color: #333;
+    background-color: #5e8d61;
     color: #fff;
     padding-top: 20px;
+    border-right: 2px solid;
+    border-color: #302910;
 }
 
 .sidebar ul[b-g2nh69mhfi] {
