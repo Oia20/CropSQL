@@ -1,12 +1,16 @@
 @inject IJSRuntime JSRuntime
 
 <div class="terminal">
-    <div class="output" @ref="outputRef">
-        @foreach (var line in terminalOutput)
-        {
-            <div class="outText">@line</div>
-        }
-    </div>
+<div class="output" @ref="outputRef">
+    @{
+        // Determine the starting index for the loop
+        int startIndex = Math.Max(0, terminalOutput.Count - 10);
+    }
+    @for (int i = startIndex; i < terminalOutput.Count; i++)
+    {
+        <div class="outText">@terminalOutput[i]</div>
+    }
+</div>
     <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
 </div>
 
@@ -34,7 +38,6 @@
         // Process command here
         // For demonstration purposes, just echo back the command
         terminalOutput.Add("CropSQL> " + command);
-        terminalOutput.Add("Result: " + command);
 
         // Notify Blazor that the component's state has changed
         StateHasChanged();

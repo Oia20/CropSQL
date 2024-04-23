@@ -13,3 +13,12 @@
     color: #f4d35d;
     font-size: 1.2em;
 }
+
+.exampleCode {
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: rgba(46, 121, 56, 0.226);
+    border: 2px solid #e8a073; /* Solid border */
+    color: #f4d35d;
+}
