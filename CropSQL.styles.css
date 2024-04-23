@@ -29,6 +29,41 @@
 a[b-dgckrwchi2] {
     color:darkgreen;
 }
+/* /Pages/Components/Home.razor.rz.scp.css */
+.content1[b-umpn6neeij] {
+    width: fit-content;
+}
+/* /Pages/Components/SideBarNav.razor.rz.scp.css */
+/* SidebarNav.razor.css */
+.sidebar[b-g2nh69mhfi] {
+    position:relative;
+    left: 0;
+    height:90vh;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.sidebar ul[b-g2nh69mhfi] {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li[b-g2nh69mhfi] {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a[b-g2nh69mhfi] {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover[b-g2nh69mhfi] {
+    background-color: #555;
+}
 /* /Pages/Components/WelcomeModal.razor.rz.scp.css */
 /* MyModalComponent.razor.css */
 
@@ -42,6 +77,8 @@ a[b-dgckrwchi2] {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 500;
+
 }
 
 .modalBack[b-twfjh9y7rz] {
