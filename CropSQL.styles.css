@@ -57,6 +57,15 @@ a[b-dgckrwchi2] {
     color: #f4d35d;
     font-size: 1.2em;
 }
+
+.exampleCode[b-g6znmiomj0] {
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: rgba(46, 121, 56, 0.226);
+    border: 2px solid #e8a073; /* Solid border */
+    color: #f4d35d;
+}
 /* /Pages/Components/SideBarNav.razor.rz.scp.css */
 /* SidebarNav.razor.css */
 .sidebar[b-g2nh69mhfi] {
@@ -108,16 +117,18 @@ a[b-dgckrwchi2] {
     border: 2px solid #5e8d61; /* Solid border */
     margin: 5px;
     width:80%;
-    height:fit-content;
     margin:auto;
     margin-top: 5px;
     margin-bottom:5px;
-    height:70%
+    min-height: 60%;
+    max-height: 70%;
+    overflow-y: auto;
+    overflow: hidden;
 }
 
 .output[b-w5wt5gqa25] {
-    min-height: 60%;
-    max-height: 70%;
+    min-height: 70%;
+    max-height: 80%;
     overflow-y: auto;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
