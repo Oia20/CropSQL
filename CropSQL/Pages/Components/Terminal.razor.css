@@ -48,3 +48,8 @@ input[type="text"] {
     margin:2px;
     margin-left: 5px;
 }
+
+.prompt {
+    text-align: center;
+    color: #f4d35d;
+}

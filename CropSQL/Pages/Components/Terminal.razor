@@ -1,6 +1,8 @@
 @inject IJSRuntime JSRuntime
 
 <div class="terminal">
+    <h2 class="prompt">CropSQL Terminal</h2>
+
 <div class="output" @ref="outputRef">
     @{
         // Determine the starting index for the loop
@@ -13,10 +15,14 @@
 </div>
     <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
 </div>
+    @if (completed) {
+        <NextModal />
+    }
 
 @code {
     private List<string> terminalOutput = new List<string>();
     private string currentInput = "";
+    private bool completed = false;
 
     private ElementReference outputRef;
     private ElementReference inputRef;
@@ -38,7 +44,17 @@
         // Process command here
         // For demonstration purposes, just echo back the command
         terminalOutput.Add("CropSQL> " + command);
-
+        // Split the string at every space
+        string[] words = command.Split(' ');
+        string last = command[command.Length - 1].ToString();
+        
+        Console.WriteLine(command);
+        Console.WriteLine(words);
+        if (words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3 && last == ";") {
+            Console.WriteLine("CREATED");
+            terminalOutput.Add("Challenge passed, DB created.");
+            completed = true;
+        }
         // Notify Blazor that the component's state has changed
         StateHasChanged();
     }
