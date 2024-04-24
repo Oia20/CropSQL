@@ -112,24 +112,32 @@ a[b-dgckrwchi2] {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increased shadow */
     border: 2px solid #5e8d61; /* Solid border */
     margin: 20px;
-    width:80%;
+    width:90%;
     height:fit-content;
     margin:auto;
     margin-top: 14px;
     margin-bottom:14px;
     color: #f4d35d;
     font-size: 1.2em;
+    
 }
 
 .exampleCode[b-g6znmiomj0] {
     overflow-y: auto;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
-    background-color: rgba(46, 121, 56, 0.226);
+    background-color: rgba(49, 87, 54, 0.664);
+    padding: 20px;
     border: 2px solid #e8a073; /* Solid border */
     color: #f4d35d;
+    border-radius: 20px;
+
 }
 
+h2[b-g6znmiomj0] {
+        text-align: center;
+        color: #f4d35d;
+}
 /* /Pages/Components/SideBarNav.razor.rz.scp.css */
 /* SidebarNav.razor.css */
 .sidebar[b-g2nh69mhfi] {
@@ -186,7 +194,7 @@ a[b-dgckrwchi2] {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increased shadow */
     border: 2px solid #5e8d61; /* Solid border */
     margin: 5px;
-    width:80%;
+    width:90%;
     margin:auto;
     margin-top: 5px;
     margin-bottom:5px;
@@ -202,9 +210,11 @@ a[b-dgckrwchi2] {
     overflow-y: auto;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
-    background-color: rgba(46, 121, 56, 0.226);
+    background-color: rgba(49, 87, 54, 0.664);
     border: 2px solid #e8a073; /* Solid border */
+    border-radius: 20px;
     color: #f4d35d;
+    padding: 20px;
 
 }
 
@@ -212,9 +222,13 @@ input[type="text"][b-w5wt5gqa25] {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
-    background-color: rgba(46, 121, 56, 0.226);
+    background-color: rgba(49, 87, 54, 0.664);
     border: 2px solid #e8a073; /* Solid border */
+    border-radius: 20px;
     color: #f4d35d;
+}
+input[b-w5wt5gqa25]::placeholder {
+    color:#f4d35d44;
 }
 
 .outText[b-w5wt5gqa25] {
@@ -225,6 +239,20 @@ input[type="text"][b-w5wt5gqa25] {
 .prompt[b-w5wt5gqa25] {
     text-align: center;
     color: #f4d35d;
+}
+
+.exec-but[b-w5wt5gqa25] {
+    width: 30%;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    justify-self: center;
+    background-color: rgba(49, 87, 54, 0.664);
+    border: 2px solid #e8a073; /* Solid border */
+    border-radius: 20px;
+    color: #f4d35d;
+    margin: auto;
+    margin-top: 5px;;
 }
 /* /Pages/Components/WelcomeModal.razor.rz.scp.css */
 /* MyModalComponent.razor.css */
