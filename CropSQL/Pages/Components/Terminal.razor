@@ -1,7 +1,7 @@
 @inject IJSRuntime JSRuntime
 
 <div class="terminal">
-    <h2 class="prompt">CropSQL Terminal</h2>
+    <h2 class="">CropSQL Terminal</h2>
 
 <div class="output" @ref="outputRef">
     @{
@@ -14,20 +14,33 @@
     }
 </div>
     <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
-    <button class="exec-but">Execute</button>
+    <button @onclick="ButtonClicked" class="exec-but" >Execute</button>
 </div>
-    @if (completed) {
-        <NextModal />
-    }
+<div class="prompt">
+    <h2>Prompt</h2>
+
+    <p>@prompt</p>
+    <h3>Example:</h3>
+    <div class="exampleCode">
+        <p>@codeSample</p>
+    </div>
+</div>
+
 
 @code {
     private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter the instructed command below."]);
     private string currentInput = "";
     private bool completed = false;
-    
+    private int termNum = 1;
     private ElementReference outputRef;
-    private ElementReference inputRef;
+    public string prompt ="";
+    public string codeSample = "";
 
+    private ElementReference inputRef;
+    private void ButtonClicked() {
+        ExecuteCommand(currentInput);
+        currentInput = ""; // Clear the input field
+    }
     private async Task HandleInput(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
@@ -50,14 +63,34 @@
                 // Your remaining logic here...
         Console.WriteLine(command);
         Console.WriteLine(words);
-        if ( words.Length > 0 && words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3) {
-            string last = command[command.Length - 1].ToString();
-            if (last == ";") {
-                Console.WriteLine("CREATED");
-                terminalOutput.Add("Challenge passed, DB created.");
-                completed = true;
-            }
 
+        switch (termNum) {
+            case 1:
+                prompt =  "public string prompt";
+                codeSample =  "public string prompt";
+
+                if ( words.Length > 0 && words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3) {
+                    string last = command[command.Length - 1].ToString();
+                    if (last == ";") {
+                        Console.WriteLine("CREATED");
+                        terminalOutput.Add("Challenge passed, DB created.");
+                        termNum++;
+                    }
+                }
+                break;
+            case 2:
+                 prompt =  "publictyjyjft string prompt";
+                codeSample =  "publictfjftjtj string prompt";
+                if ( words.Length > 0 && words[0] == "USE" && words.Length == 2) {
+                    string last = command[command.Length - 1].ToString();
+                    if (last == ";") {
+                        Console.WriteLine("CREATED");
+                        terminalOutput.Add("Challenge passed, Using DB");
+                        termNum++;
+                    }
+                }
+                break;
+            
         }
         // Notify Blazor that the component's state has changed
         StateHasChanged();

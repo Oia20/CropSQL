@@ -7,5 +7,15 @@
 .container1234 {
     display: flex;
     flex-direction: column;
-    width: 100%
+    width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+.container123 {
+    height:max-content;
+}
+.container1234 {
+    height:max-content;
+
+}
 }
