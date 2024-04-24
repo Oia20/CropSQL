@@ -4,12 +4,12 @@
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increased shadow */
     border: 2px solid #5e8d61; /* Solid border */
-    margin: 5px;
+    margin: 20px;
     width:80%;
     height:fit-content;
     margin:auto;
-    margin-top: 5px;
-    margin-bottom:5px;
+    margin-top: 14px;
+    margin-bottom:14px;
     color: #f4d35d;
     font-size: 1.2em;
 }
@@ -22,3 +22,4 @@
     border: 2px solid #e8a073; /* Solid border */
     color: #f4d35d;
 }
+
