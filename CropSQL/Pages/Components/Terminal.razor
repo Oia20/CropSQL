@@ -14,16 +14,17 @@
     }
 </div>
     <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
+    <button class="exec-but">Execute</button>
 </div>
     @if (completed) {
         <NextModal />
     }
 
 @code {
-    private List<string> terminalOutput = new List<string>();
+    private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter the instructed command below."]);
     private string currentInput = "";
     private bool completed = false;
-
+    
     private ElementReference outputRef;
     private ElementReference inputRef;
 
@@ -46,14 +47,17 @@
         terminalOutput.Add("CropSQL> " + command);
         // Split the string at every space
         string[] words = command.Split(' ');
-        string last = command[command.Length - 1].ToString();
-        
+                // Your remaining logic here...
         Console.WriteLine(command);
         Console.WriteLine(words);
-        if (words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3 && last == ";") {
-            Console.WriteLine("CREATED");
-            terminalOutput.Add("Challenge passed, DB created.");
-            completed = true;
+        if ( words.Length > 0 && words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3) {
+            string last = command[command.Length - 1].ToString();
+            if (last == ";") {
+                Console.WriteLine("CREATED");
+                terminalOutput.Add("Challenge passed, DB created.");
+                completed = true;
+            }
+
         }
         // Notify Blazor that the component's state has changed
         StateHasChanged();
