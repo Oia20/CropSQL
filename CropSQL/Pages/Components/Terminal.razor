@@ -131,7 +131,7 @@
                 }
                 break;
             case 3:
-                if (words.Length > 0 && words[0] == "CREATE" && words[1] == "TABLE" && words[2] == "crops" || words[2] == "crops(" && command.Contains("crop") && command.Contains("varchar") && command.Contains("20") && command.Contains("amount int")) {
+                if (words.Length >= 3 && words[0] == "CREATE" && words[1] == "TABLE" && (words[2] == "crops" || words[2] == "crops(") && command.Contains("crop") && command.Contains("varchar") && command.Contains("20") && command.Contains("amount int")) {
                     string last = command[command.Length - 1].ToString();
                     if (last == ";") {
                         terminalOutput.Add("Challenge passed, Table Created in DB");
