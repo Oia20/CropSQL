@@ -1,11 +1,21 @@
 @inject IJSRuntime JSRuntime
+<div class="container123">
 
+<div class="sidebar">
+    <ul>
+        <li><a href="/">1. Create Farm</a></li>
+        <li><a href="/Table">2. Use DB</a></li>
+        <li><a href="#">3. Create Table</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</div>
+<div class="container1234">
 <div class="terminal">
     <h2 class="">CropSQL Terminal</h2>
 
 <div class="output" @ref="outputRef">
     @{
-        // Determine the starting index for the loop
+        // starting index for past terminal commands.
         int startIndex = Math.Max(0, terminalOutput.Count - 10);
     }
     @for (int i = startIndex; i < terminalOutput.Count; i++)
@@ -19,28 +29,36 @@
 <div class="prompt">
     <h2>Prompt</h2>
 
-    <p>@prompt</p>
+    <p>@prompt[termNum - 1]</p>
     <h3>Example:</h3>
     <div class="exampleCode">
-        <p>@codeSample</p>
+        <p>@codeSample[termNum - 1]</p>
+    </div>
     </div>
 </div>
 
-
+</div>
 @code {
     private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter the instructed command below."]);
     private string currentInput = "";
+    private List<string> prompt = new List<string>([
+        "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of your farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
+        "hellp"
+        ]);
+    private List<string> codeSample = new List<string>([
+        "CREATE DATABASE myfarm;",
+        "USE myfarm;"
+        ]);
+    
     private bool completed = false;
     private int termNum = 1;
     private ElementReference outputRef;
-    public string prompt ="";
-    public string codeSample = "";
-
     private ElementReference inputRef;
     private void ButtonClicked() {
         ExecuteCommand(currentInput);
         currentInput = ""; // Clear the input field
     }
+
     private async Task HandleInput(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
@@ -56,19 +74,13 @@
     private void ExecuteCommand(string command)
     {
         // Process command here
-        // For demonstration purposes, just echo back the command
         terminalOutput.Add("CropSQL> " + command);
-        // Split the string at every space
         string[] words = command.Split(' ');
-                // Your remaining logic here...
         Console.WriteLine(command);
         Console.WriteLine(words);
 
         switch (termNum) {
             case 1:
-                prompt =  "public string prompt";
-                codeSample =  "public string prompt";
-
                 if ( words.Length > 0 && words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3) {
                     string last = command[command.Length - 1].ToString();
                     if (last == ";") {
@@ -79,8 +91,6 @@
                 }
                 break;
             case 2:
-                 prompt =  "publictyjyjft string prompt";
-                codeSample =  "publictfjftjtj string prompt";
                 if ( words.Length > 0 && words[0] == "USE" && words.Length == 2) {
                     string last = command[command.Length - 1].ToString();
                     if (last == ";") {
@@ -92,7 +102,6 @@
                 break;
             
         }
-        // Notify Blazor that the component's state has changed
         StateHasChanged();
     }
 }
