@@ -6,8 +6,8 @@
         <ul @onclick="ToggleDropdown">
             <li @onclick="@(async () => await ChangeStage(1))"><a>1. Create Farm</a></li>
             <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
-            <li><a>3. Create Table</a></li>
-            <li><a>4. Contact</a></li>
+            <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
+            <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
         </ul>
     }
 </div>
@@ -16,8 +16,8 @@
     <ul>
         <li @onclick="@(async () => await ChangeStage(1))"><a>1. Create Farm</a></li>
         <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
-        <li><a>3. Create Table</a></li>
-        <li><a>4. Contact</a></li>
+        <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
+        <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
     </ul>
 </div>
 <div class="container1234">
@@ -54,11 +54,15 @@
     private string currentInput = "";
     private List<string> prompt = new List<string>([
         "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of our farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
-        "hellp"
+        "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
+        "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
+        "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype"
         ]);
     private List<string> codeSample = new List<string>([
         "CREATE DATABASE sqland;",
-        "USE sqland;"
+        "USE sqland;",
+        "CREATE TABLE crops ( crop varchar(20), amount int );",
+        "ALTER TABLE crops ADD worth int;"
         ]);
     
     private bool completed = false;
@@ -122,7 +126,18 @@
                     }
                 }
                 break;
-            
+            case 3:
+                if (words.Length > 0 && words[0] == "CREATE" && words[1] == "TABLE" && words[2] == "crops" || words[2] == "crops(" && command.Contains("crop") && command.Contains("varchar") && command.Contains("20") && command.Contains("amount int")) {
+                    string last = command[command.Length - 1].ToString();
+                    if (last == ";") {
+                        terminalOutput.Add("Challenge passed, Table Created in DB");
+                        termNum++;
+                    }
+                }
+            break;
+            case 4:
+
+            break;
         }
         StateHasChanged();
     }
