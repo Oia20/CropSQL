@@ -233,11 +233,20 @@ h3[b-w5wt5gqa25] {
 
 .sidebar ul li a:hover[b-w5wt5gqa25] {
     background-color: #e8a073;
+    cursor: pointer;
+}
+
+.dropdown-butn[b-w5wt5gqa25] {
+    display: none;
 }
 
 @media screen and (max-width: 700px)  {
     .sidebar[b-w5wt5gqa25] {
         display: none;
+    }
+
+    .dropdown-butn[b-w5wt5gqa25] {
+        display: block;
     }
 } 
 
