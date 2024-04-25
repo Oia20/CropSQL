@@ -18,9 +18,7 @@
     margin-top: 5px;
     margin-bottom:5px;
     min-height: 60%;
-    max-height: 70%;
-    overflow-y: auto;
-    overflow: hidden;
+    height:500px;
 }
 
 .output {
@@ -73,6 +71,7 @@ input::placeholder {
     color: #f4d35d;
     margin: auto;
     margin-top: 5px;;
+    margin-bottom: 20px;
 }
 
 .prompt {
@@ -156,6 +155,10 @@ h3 {
     display: none;
 }
 
+.whole-drop {
+    display: none;
+}
+
 @media screen and (max-width: 700px)  {
     .sidebar {
         display: none;
@@ -163,7 +166,34 @@ h3 {
 
     .dropdown-butn {
         display: block;
+        width: fit-content;
+        height:fit-content;
+        background-color: rgba(49, 87, 54, 0.664);
+        border: 2px solid #e8a073; /* Solid border */
+        border-radius: 20px;
+        color: #f4d35d;
+        padding: 5px;
+        margin: 5px;
     }
+
+    .whole-drop {
+        display: block;
+    }
+
+    .whole-drop ul {
+        position:absolute;
+        z-index: 200;
+        background-color: rgb(49, 87, 54);
+        color: #f4d35d;
+        padding: 5px;
+        border: 2px solid #e8a073; /* Solid border */
+    }
+
+    .whole-drop ul li{
+        border-bottom: 2px solid #7cb16e; /* Solid border */
+        margin: 5px;
+    }
+
 } 
 
 .container123 {

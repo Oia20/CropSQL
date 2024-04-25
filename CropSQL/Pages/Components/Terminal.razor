@@ -1,5 +1,16 @@
 @inject IJSRuntime JSRuntime
-<button class="dropdown-butn"></button>
+<div class="whole-drop">
+    <button class="dropdown-butn" @onclick="ToggleDropdown">Prompt @termNum <span class="dropdown-icon">&#9660;</span></button>
+    @if (isDropdownVisible)
+    {
+        <ul @onclick="ToggleDropdown">
+            <li @onclick="@(async () => await ChangeStage(1))"><a>1. Create Farm</a></li>
+            <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
+            <li><a>3. Create Table</a></li>
+            <li><a>4. Contact</a></li>
+        </ul>
+    }
+</div>
 <div class="container123">
 <div class="sidebar">
     <ul>
@@ -42,25 +53,24 @@
     private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter commands below."]);
     private string currentInput = "";
     private List<string> prompt = new List<string>([
-        "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of your farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
+        "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of our farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
         "hellp"
         ]);
     private List<string> codeSample = new List<string>([
-        "CREATE DATABASE myfarm;",
-        "USE myfarm;"
+        "CREATE DATABASE sqland;",
+        "USE sqland;"
         ]);
     
     private bool completed = false;
     private int termNum = 1;
     private ElementReference outputRef;
     private ElementReference inputRef;
-    bool isSidebarOpen = false;
+    bool isDropdownVisible = false;
 
-    void ToggleSidebar()
+    void ToggleDropdown()
     {
-        isSidebarOpen = !isSidebarOpen;
+        isDropdownVisible = !isDropdownVisible;
     }
-
     private void ButtonClicked() {
         ExecuteCommand(currentInput);
         currentInput = ""; // Clear the input field
