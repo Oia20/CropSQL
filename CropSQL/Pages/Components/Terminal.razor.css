@@ -58,6 +58,7 @@ input::placeholder {
 .prompt {
     text-align: center;
     color: #f4d35d;
+    
 }
 
 .exec-but {
@@ -100,7 +101,7 @@ input::placeholder {
     border: 2px solid #e8a073; /* Solid border */
     color: #f4d35d;
     border-radius: 20px;
-
+    font-family: monospace;
 }
 
 h2 {
@@ -116,15 +117,16 @@ h3 {
 /* SidebarNav.razor.css */
 .sidebar {
     position:relative;
+    font-family: monospace;
+
     left: 0;
     top:0;
     height:100vh;
     width: 200px;
-    background-color: #5e8d61;
+    background-color: rgb(49, 87, 54);
     color: #f4d35d;
     padding-top: 20px;
-    border-right: 2px solid;
-    border-color: #302910;
+    border-right: 2px solid #7cb16e; /* Solid border */
 }
 
 .sidebar ul {
@@ -141,6 +143,8 @@ h3 {
     padding: 10px;
     color: #f4d35d;
     text-decoration: none;
+    border-bottom: 2px solid #7cb16e; /* Solid border */
+
 }
 
 .sidebar ul li a:hover {
@@ -172,4 +176,10 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 100%
+}
+
+.exec-but:hover {
+    color:#f4d35d;
+    background-color: #e8a073;
+    border-color: rgba(49, 87, 54, 0.664);
 }

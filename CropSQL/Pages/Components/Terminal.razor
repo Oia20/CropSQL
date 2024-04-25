@@ -23,7 +23,7 @@
         <div class="outText">@terminalOutput[i]</div>
     }
 </div>
-    <input type="text" @ref="inputRef" placeholder="CropSQL> Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
+    <input type="text" @ref="inputRef" placeholder="Add Commands Here" @bind="currentInput" @onkeydown="HandleInput"/> 
     <button @onclick="ButtonClicked" class="exec-but" >Execute</button>
 </div>
 <div class="prompt">
@@ -39,7 +39,7 @@
 
 </div>
 @code {
-    private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter the instructed command below."]);
+    private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter commands below."]);
     private string currentInput = "";
     private List<string> prompt = new List<string>([
         "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of your farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
