@@ -3,9 +3,9 @@
     position: relative; /* Make the container a positioned parent */
     width: 100%;
     height: 75px;
-    background-image: linear-gradient(140deg, #5e8d61,#5e8d61 );
-    border-bottom: 2px solid;
-    border-color: #302910;
+    background-color: rgb(49, 87, 54);
+    border-bottom: 2px solid #7cb16e; /* Solid border */
+
 }
 
 
@@ -19,15 +19,33 @@
 
 .github[b-dgckrwchi2] {
     position: absolute; /* Position the element absolutely */
-    top: 50%; /* Move the element 50% down from the top of the container */
+    top: 25%; /* Move the element 50% down from the top of the container */
     right: 0; /* Align the element to the right */
     transform: translateY(-20%); /* Adjust for the height of the element */
     margin-right: 25px;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    width: fit-content;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    justify-self: center;
+    background-color: rgba(49, 87, 54, 0.664);
+    border: 2px solid #e8a073; /* Solid border */
+    border-radius: 20px;
+    color: #f4d35d;
+    padding: 5px;
 }
 
 a[b-dgckrwchi2] {
-    color:darkgreen;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.github:hover[b-dgckrwchi2] {
+    color:#f4d35d;
+    background-color: #e8a073;
+    border-color: rgba(49, 87, 54, 0.664);
 }
 /* /Pages/Components/Home.razor.rz.scp.css */
 .container123[b-umpn6neeij] {
@@ -146,6 +164,7 @@ input[b-w5wt5gqa25]::placeholder {
 .prompt[b-w5wt5gqa25] {
     text-align: center;
     color: #f4d35d;
+    
 }
 
 .exec-but[b-w5wt5gqa25] {
@@ -188,7 +207,7 @@ input[b-w5wt5gqa25]::placeholder {
     border: 2px solid #e8a073; /* Solid border */
     color: #f4d35d;
     border-radius: 20px;
-
+    font-family: monospace;
 }
 
 h2[b-w5wt5gqa25] {
@@ -204,15 +223,16 @@ h3[b-w5wt5gqa25] {
 /* SidebarNav.razor.css */
 .sidebar[b-w5wt5gqa25] {
     position:relative;
+    font-family: monospace;
+
     left: 0;
     top:0;
     height:100vh;
     width: 200px;
-    background-color: #5e8d61;
+    background-color: rgb(49, 87, 54);
     color: #f4d35d;
     padding-top: 20px;
-    border-right: 2px solid;
-    border-color: #302910;
+    border-right: 2px solid #7cb16e; /* Solid border */
 }
 
 .sidebar ul[b-w5wt5gqa25] {
@@ -229,6 +249,8 @@ h3[b-w5wt5gqa25] {
     padding: 10px;
     color: #f4d35d;
     text-decoration: none;
+    border-bottom: 2px solid #7cb16e; /* Solid border */
+
 }
 
 .sidebar ul li a:hover[b-w5wt5gqa25] {
@@ -260,6 +282,12 @@ h3[b-w5wt5gqa25] {
     display: flex;
     flex-direction: column;
     width: 100%
+}
+
+.exec-but:hover[b-w5wt5gqa25] {
+    color:#f4d35d;
+    background-color: #e8a073;
+    border-color: rgba(49, 87, 54, 0.664);
 }
 /* /Pages/Components/WelcomeModal.razor.rz.scp.css */
 /* MyModalComponent.razor.css */
