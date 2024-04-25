@@ -1,12 +1,12 @@
 @inject IJSRuntime JSRuntime
+<button class="dropdown-butn"></button>
 <div class="container123">
-
 <div class="sidebar">
     <ul>
-        <li><a href="/">1. Create Farm</a></li>
-        <li><a href="/Table">2. Use DB</a></li>
-        <li><a href="#">3. Create Table</a></li>
-        <li><a href="#">Contact</a></li>
+        <li @onclick="@(async () => await ChangeStage(1))"><a>1. Create Farm</a></li>
+        <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
+        <li><a>3. Create Table</a></li>
+        <li><a>4. Contact</a></li>
     </ul>
 </div>
 <div class="container1234">
@@ -54,6 +54,13 @@
     private int termNum = 1;
     private ElementReference outputRef;
     private ElementReference inputRef;
+    bool isSidebarOpen = false;
+
+    void ToggleSidebar()
+    {
+        isSidebarOpen = !isSidebarOpen;
+    }
+
     private void ButtonClicked() {
         ExecuteCommand(currentInput);
         currentInput = ""; // Clear the input field
@@ -69,6 +76,11 @@
             ExecuteCommand(currentInput);
             currentInput = ""; // Clear the input field
         }
+    }
+
+    private Task ChangeStage(int stepNum) {
+        termNum = stepNum;
+        return Task.CompletedTask;
     }
 
     private void ExecuteCommand(string command)

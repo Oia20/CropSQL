@@ -145,11 +145,20 @@ h3 {
 
 .sidebar ul li a:hover {
     background-color: #e8a073;
+    cursor: pointer;
+}
+
+.dropdown-butn {
+    display: none;
 }
 
 @media screen and (max-width: 700px)  {
     .sidebar {
         display: none;
+    }
+
+    .dropdown-butn {
+        display: block;
     }
 } 
 
