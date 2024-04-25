@@ -127,7 +127,7 @@
 
         switch (termNum) {
             case 1:
-                if (currentCommand[0].ToUpper().Contains("CREATE") && currentCommand[1].ToUpper().Contains("DATABASE") && currentCommand.Count <= 4) {
+                if (currentCommand.Count > 2 && currentCommand[0].ToUpper().Contains("CREATE") && currentCommand[1].ToUpper().Contains("DATABASE") && currentCommand.Count <= 4) {
                     terminalOutput.Add("CropSQL> You've got it! DB created.");
                     termNum++;
                 } else {
