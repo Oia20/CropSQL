@@ -161,7 +161,6 @@ input[b-w5wt5gqa25]::placeholder {
 }
 
 .prompt[b-w5wt5gqa25] {
-    text-align: center;
     color: #f4d35d;
     
 }
@@ -208,6 +207,8 @@ input[b-w5wt5gqa25]::placeholder {
     color: #f4d35d;
     border-radius: 20px;
     font-family: monospace;
+    text-align: left;
+
 }
 
 h2[b-w5wt5gqa25] {
@@ -319,6 +320,10 @@ h3[b-w5wt5gqa25] {
     color:#f4d35d;
     background-color: #e8a073;
     border-color: rgba(49, 87, 54, 0.664);
+}
+
+.code-line[b-w5wt5gqa25] {
+    text-align: left;
 }
 /* /Pages/Components/WelcomeModal.razor.rz.scp.css */
 /* MyModalComponent.razor.css */
