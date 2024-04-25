@@ -54,20 +54,10 @@
 </div>
 @code {
     private List<string> terminalOutput = new List<string>(["CropSQL> Hello! Enter commands below."]);
+    private List<string> currentCommand = new List<string>([]);
+
     private string currentInput = "";
-    private List<string> prompt = new List<string>([
-        "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of our farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
-        "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
-        "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
-        "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype"
-        ]);
-    private List<string[]> codeSample = new List<string[]>
-    {
-        new string[] { "CREATE DATABASE sqland;" },
-        new string[] { "USE sqland;" },
-        new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int;", ");"},
-        new string[] { "ALTER TABLE crops", "ADD worth int;" }
-    };
+
     
     private bool completed = false;
     private int termNum = 1;
@@ -80,7 +70,7 @@
         isDropdownVisible = !isDropdownVisible;
     }
     private void ButtonClicked() {
-        ExecuteCommand(currentInput);
+        AddCommand(currentInput);
         currentInput = ""; // Clear the input field
     }
 
@@ -90,9 +80,9 @@
         {
             // Get the value of the input field using JavaScript interop
             currentInput = await JSRuntime.InvokeAsync<string>("getInputValue", inputRef);
-
-            ExecuteCommand(currentInput);
-            currentInput = ""; // Clear the input field
+            await JSRuntime.InvokeAsync<string>("clearInput", inputRef);
+            AddCommand(currentInput);
+            currentInput = "";
         }
     }
 
@@ -100,44 +90,53 @@
         termNum = stepNum;
         return Task.CompletedTask;
     }
+    private void AddCommand(string command) {
+        Console.WriteLine("hello");
+        StateHasChanged();
+        if (command.Length > 0) {
+            string last = command[command.Length - 1].ToString();
+            terminalOutput.Add("CropSQL> " + command);
+            currentCommand.Add(command);
+            if (last == ";") {
+                ExecuteCommand();
+                currentCommand.Clear();
+            }
+        }
 
-    private void ExecuteCommand(string command)
+    }
+        private List<string> prompt = new List<string>([
+        "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of our farm followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
+        "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
+        "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
+        "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype"
+        ]);
+    private List<string[]> codeSample = new List<string[]>
+    {
+        new string[] { "CREATE DATABASE sqland;" },
+        new string[] { "USE sqland;" },
+        new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int;", ");"},
+        new string[] { "ALTER TABLE crops", "ADD worth int;" }
+    };
+    private void ExecuteCommand()
     {
         // Process command here
-        terminalOutput.Add("CropSQL> " + command);
-        string[] words = command.Split(' ');
-        Console.WriteLine(command);
-        Console.WriteLine(words);
+        currentCommand.RemoveAll(string.IsNullOrEmpty);
+        currentCommand.ForEach(Console.WriteLine);
+        currentCommand = currentCommand.SelectMany(command => command.Split(" ")).ToList();
+        currentCommand.ForEach(Console.WriteLine);
 
         switch (termNum) {
             case 1:
-                if ( words.Length > 0 && words[0] == "CREATE" && words[1] == "DATABASE" && words.Length == 3) {
-                    string last = command[command.Length - 1].ToString();
-                    if (last == ";") {
-                        Console.WriteLine("CREATED");
-                        terminalOutput.Add("Challenge passed, DB created.");
-                        termNum++;
-                    }
+                if (currentCommand[0].ToUpper().Contains("CREATE") && currentCommand[1].ToUpper().Contains("DATABASE") && currentCommand.Count <= 4) {
+                    terminalOutput.Add("CropSQL> You've got it! DB created.");
+                    termNum++;
+                } else {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
                 }
                 break;
             case 2:
-                if ( words.Length > 0 && words[0] == "USE" && words.Length == 2) {
-                    string last = command[command.Length - 1].ToString();
-                    if (last == ";") {
-                        Console.WriteLine("CREATED");
-                        terminalOutput.Add("Challenge passed, Using DB");
-                        termNum++;
-                    }
-                }
                 break;
             case 3:
-                if (words.Length >= 3 && words[0] == "CREATE" && words[1] == "TABLE" && (words[2] == "crops" || words[2] == "crops(") && command.Contains("crop") && command.Contains("varchar") && command.Contains("20") && command.Contains("amount int")) {
-                    string last = command[command.Length - 1].ToString();
-                    if (last == ";") {
-                        terminalOutput.Add("Challenge passed, Table Created in DB");
-                        termNum++;
-                    }
-                }
             break;
             case 4:
 
