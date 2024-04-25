@@ -43,7 +43,10 @@
     <p>@prompt[termNum - 1]</p>
     <h3>Example:</h3>
     <div class="exampleCode">
-        <p>@codeSample[termNum - 1]</p>
+        @foreach (string lines in codeSample[termNum - 1])
+        {
+            <p class="code-line">@string.Join(" ", lines)</p>
+        }
     </div>
     </div>
 </div>
@@ -58,12 +61,13 @@
         "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
         "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype"
         ]);
-    private List<string> codeSample = new List<string>([
-        "CREATE DATABASE sqland;",
-        "USE sqland;",
-        "CREATE TABLE crops ( crop varchar(20), amount int );",
-        "ALTER TABLE crops ADD worth int;"
-        ]);
+    private List<string[]> codeSample = new List<string[]>
+    {
+        new string[] { "CREATE DATABASE sqland;" },
+        new string[] { "USE sqland;" },
+        new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int;", ");"},
+        new string[] { "ALTER TABLE crops", "ADD worth int;" }
+    };
     
     private bool completed = false;
     private int termNum = 1;

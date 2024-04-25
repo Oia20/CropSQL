@@ -55,7 +55,6 @@ input::placeholder {
 }
 
 .prompt {
-    text-align: center;
     color: #f4d35d;
     
 }
@@ -102,6 +101,8 @@ input::placeholder {
     color: #f4d35d;
     border-radius: 20px;
     font-family: monospace;
+    text-align: left;
+
 }
 
 h2 {
@@ -213,4 +214,8 @@ h3 {
     color:#f4d35d;
     background-color: #e8a073;
     border-color: rgba(49, 87, 54, 0.664);
+}
+
+.code-line {
+    text-align: left;
 }
