@@ -114,7 +114,7 @@
     {
         new string[] { "CREATE DATABASE sqland;" },
         new string[] { "USE sqland;" },
-        new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int;", ");"},
+        new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int", ");"},
         new string[] { "ALTER TABLE crops", "ADD worth int;" }
     };
     private void ExecuteCommand()
@@ -128,7 +128,7 @@
         switch (termNum) {
             case 1:
                 if (currentCommand.Count > 2 && currentCommand[0].ToUpper().Contains("CREATE") && currentCommand[1].ToUpper().Contains("DATABASE") && currentCommand.Count <= 4) {
-                    terminalOutput.Add("CropSQL> You've got it! DB created.");
+                    terminalOutput.Add("CropSQL> You've got it! DB Created.");
                     termNum++;
                 } else {
                     terminalOutput.Add("CropSQL> Incorrect Command");
@@ -136,17 +136,30 @@
                 break;
             case 2:
                 if (currentCommand.Count >= 2 && currentCommand.Count <= 3 && currentCommand[0].ToUpper().Contains("USE") && currentCommand[1].ToUpper().Contains("SQLAND")) {
-                    terminalOutput.Add("CropSQL> Nice job! Now using sqland db.");
+                    terminalOutput.Add("CropSQL> Nice job! Now Using sqland DB.");
                     termNum++;
                 } else {
                     terminalOutput.Add("CropSQL> Incorrect Command");
                 }
                 break;
             case 3:
-                if (currentCommand[0].ToUpper().Contains("CREATE") && currentCommand[1].ToUpper().Contains("TABLE")) {
-                    terminalOutput.Add("CropSQL> Nice job! Now using sqland db.");
+                if (currentCommand[0].ToUpper().Contains("CREATE") && 
+                    currentCommand[1].ToUpper().Contains("TABLE") && 
+                    currentCommand[2].ToUpper().Contains("CROPS") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("VARCHAR")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("AMOUNT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("INT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("20")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(",")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("("))
+
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> You're on fire! 'crops' Table Created.");
                     termNum++;
-                } else {
+                } 
+                else 
+                {
                     terminalOutput.Add("CropSQL> Incorrect Command");
                 }
             break;
