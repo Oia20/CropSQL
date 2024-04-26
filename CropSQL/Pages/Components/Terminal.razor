@@ -8,8 +8,8 @@
             <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
             <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
             <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
-            <li @onclick="@(async () => await ChangeStage(5))"><a>5. Insert Into</a></li>
-            <li @onclick="@(async () => await ChangeStage(6))"><a>6. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(5))"><a>5. Describe Table</a></li>
+            <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into</a></li>
             <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
@@ -31,8 +31,8 @@
         <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
         <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
         <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
-        <li @onclick="@(async () => await ChangeStage(5))"><a>5. Insert Into</a></li>
-        <li @onclick="@(async () => await ChangeStage(6))"><a>6. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(5))"><a>5. Describe Table</a></li>
+        <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into </a></li>
         <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
@@ -135,6 +135,7 @@
         "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
         "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
         "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype",
+        "Now lets look at our table! We do this with 'DESCRIBE' followed by the tables name",
         "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (Crop, Amount, Worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
         "Hello",
         "Hello",
@@ -155,7 +156,8 @@
         new string[] { "USE sqland;" },
         new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int", ");"},
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "INSERT INTO crops (crop, amount, worth)", "VALUES (carrot, 5, 2);" },
+        new string[] { "DESCRIBE crops;"},
+        new string[] { "INSERT INTO crops (crop, amount, worth)", "VALUES ('carrot', 5, 2);" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
@@ -235,10 +237,47 @@
                 }
             break;
             case 5:
-
+                if (currentCommand.Count < 4 &&
+                    currentCommand[0].ToUpper() == "DESCRIBE" &&
+                    currentCommand[1].ToUpper().Contains("CROPS")
+                )
+                {
+                    terminalOutput.Add("+--------+-------------+");
+                    terminalOutput.Add("| Field--| Type--------|");
+                    terminalOutput.Add("| crop---| varchar(20)-|");
+                    terminalOutput.Add("| amount-| int---------|");
+                    terminalOutput.Add("| worth--| int---------|");
+                    terminalOutput.Add("+--------+-------------+");
+                    terminalOutput.Add("CropSQL> Nice work! that's a good looking table!");
+                    termNum++;
+                } else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 6:
+                if (currentCommand[0].ToUpper().Contains("INSERT") && 
+                    currentCommand[1].ToUpper().Contains("INTO") && 
+                    currentCommand[2].ToUpper().Contains("CROPS") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("WORTH")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("AMOUNT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("CROP")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("'CARROT'")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(",")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("VALUES")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("5")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("2")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("("))
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> You totally just planted those carrots!");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
 
             break;
 
