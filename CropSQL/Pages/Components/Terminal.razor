@@ -137,7 +137,7 @@
         "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype",
         "Now lets look at our table! We do this with 'DESCRIBE' followed by the tables name",
         "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (Crop, Amount, Worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
-        "Hello",
+        "Let's now view our planted crops! Do so with the 'SELECT' keyword, then a 'a' which means all columns, then 'FROM' lastly the name of the table;",
         "Hello",
         "Hello",
         "Hello",
@@ -158,7 +158,7 @@
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "DESCRIBE crops;"},
         new string[] { "INSERT INTO crops (crop, amount, worth)", "VALUES ('carrot', 5, 2);" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "SELECT * FROM crops;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
@@ -282,7 +282,24 @@
             break;
 
             case 7:
-
+                if (currentCommand.Count < 6 &&
+                    currentCommand[0].ToUpper() == "SELECT" &&
+                    currentCommand[1].ToUpper() == "*" &&
+                    currentCommand[2].ToUpper() == "FROM" &&
+                    currentCommand[3].ToUpper().Contains("CROPS")
+                ) {
+                    terminalOutput.Add("+------+------+-----+");
+                    terminalOutput.Add("|crop--|amount|Worth|");
+                    terminalOutput.Add("+------+------+-----+");
+                    terminalOutput.Add("|carrot|-----5|----2|");
+                    terminalOutput.Add("+--------+----------+");
+                    terminalOutput.Add("CropSQL> Check out those crops!");
+                    termNum++;
+                }
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 8:
