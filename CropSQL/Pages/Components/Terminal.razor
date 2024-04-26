@@ -8,6 +8,19 @@
             <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
             <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
             <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
+            <li @onclick="@(async () => await ChangeStage(5))"><a>5. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(6))"><a>6. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(15))"><a>15. Select *</a></li>
+
+
         </ul>
     }
 </div>
@@ -18,6 +31,19 @@
         <li @onclick="@(async () => await ChangeStage(2))"><a>2. Use DB</a></li>
         <li @onclick="@(async () => await ChangeStage(3))"><a>3. Create Table</a></li>
         <li @onclick="@(async () => await ChangeStage(4))"><a>4. Alter Table</a></li>
+        <li @onclick="@(async () => await ChangeStage(5))"><a>5. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(6))"><a>6. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(15))"><a>15. Select *</a></li>
+
+
     </ul>
 </div>
 <div class="container1234">
@@ -109,7 +135,19 @@
         "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
         "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
         "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype",
-        "Hello"
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+        "Hello",
+
+
         ]);
     private List<string[]> codeSample = new List<string[]>
     {
@@ -117,7 +155,17 @@
         new string[] { "USE sqland;" },
         new string[] { "CREATE TABLE crops (", "crop varchar(20),", "amount int", ");"},
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" }
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD worth int;" },
 
     };
     private void ExecuteCommand()
@@ -187,6 +235,46 @@
                 }
             break;
             case 5:
+
+            break;
+
+            case 6:
+
+            break;
+
+            case 7:
+
+            break;
+
+            case 8:
+
+            break;
+
+            case 9:
+
+            break;
+
+            case 10:
+
+            break;
+
+            case 11:
+
+            break;
+
+            case 12:
+
+            break;
+
+            case 13:
+
+            break;
+
+            case 14:
+
+            break;
+
+            case 15:
 
             break;
         }
