@@ -11,7 +11,7 @@
             <li @onclick="@(async () => await ChangeStage(5))"><a>5. Describe Table</a></li>
             <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into</a></li>
             <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
-            <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
             <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
@@ -34,7 +34,7 @@
         <li @onclick="@(async () => await ChangeStage(5))"><a>5. Describe Table</a></li>
         <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into </a></li>
         <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
-        <li @onclick="@(async () => await ChangeStage(8))"><a>8. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
         <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
@@ -138,7 +138,7 @@
         "Now lets look at our table! We do this with 'DESCRIBE' followed by the tables name",
         "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (Crop, Amount, Worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
         "Let's now view our planted crops! Do so with the 'SELECT' keyword, then a 'a' which means all columns, then 'FROM' lastly the name of the table;",
-        "Hello",
+        "We want to add a column to our table for the product of amount * worth to figure out how much our crops are worth. We can do this with 'ALTER TABLE crops' then 'ADD total int;'",
         "Hello",
         "Hello",
         "Hello",
@@ -159,7 +159,7 @@
         new string[] { "DESCRIBE crops;"},
         new string[] { "INSERT INTO crops (crop, amount, worth)", "VALUES ('carrot', 5, 2);" },
         new string[] { "SELECT * FROM crops;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "ALTER TABLE crops", "ADD total int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
@@ -303,6 +303,22 @@
             break;
 
             case 8:
+            if (currentCommand.Count > 5 &&
+                    currentCommand[0].ToUpper() == "ALTER" &&
+                    currentCommand[1].ToUpper() == "TABLE" && 
+                    currentCommand[2].ToUpper() == "CROPS" &&
+                    currentCommand[3].ToUpper() == "ADD" && 
+                    currentCommand[4].ToUpper() == "TOTAL" && 
+                    currentCommand[5].ToUpper().Contains("INT")
+                    )
+                {
+                    terminalOutput.Add("CropSQL> Perfecto!");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
 
             break;
 
