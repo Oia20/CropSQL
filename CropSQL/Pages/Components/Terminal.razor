@@ -12,7 +12,7 @@
             <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into</a></li>
             <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
-            <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table2</a></li>
             <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
@@ -35,7 +35,7 @@
         <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into </a></li>
         <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
-        <li @onclick="@(async () => await ChangeStage(9))"><a>9. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table2</a></li>
         <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
@@ -160,7 +160,7 @@
         new string[] { "INSERT INTO crops (crop, amount, worth)", "VALUES ('carrot', 5, 2);" },
         new string[] { "SELECT * FROM crops;" },
         new string[] { "ALTER TABLE crops", "ADD total int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "CREATE TABLE sold (", "crop varchar(20),", "total int", ");" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
@@ -323,7 +323,25 @@
             break;
 
             case 9:
+                if (currentCommand[0].ToUpper().Contains("CREATE") && 
+                    currentCommand[1].ToUpper().Contains("TABLE") && 
+                    currentCommand[2].ToUpper().Contains("SOLD") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("VARCHAR")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("TOTAL")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("INT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("20")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(",")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("("))
 
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> Niceee! 'sold' table created.");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 10:
