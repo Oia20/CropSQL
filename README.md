@@ -1,6 +1,6 @@
 # CropSQL
 A game where users learn sql by managing a farm.
-
+Link: oia20.github.io/CropSQL/
 I made this website using Web Assembly, C# and Blazor.
 
 Command/queries the user will use throughout the game
