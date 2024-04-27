@@ -2,7 +2,7 @@
 A game where users learn sql by managing a farm.
 
 Link: 
-oia20.github.io/CropSQL/
+[oia20.github.io/CropSQL/](https://oia20.github.io/CropSQL/)
 
 I made this website using Web Assembly, C# and Blazor.
 
