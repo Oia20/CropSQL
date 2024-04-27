@@ -12,9 +12,9 @@
             <li @onclick="@(async () => await ChangeStage(6))"><a>6. Insert Into</a></li>
             <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
-            <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table2</a></li>
-            <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
-            <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table 2</a></li>
+            <li @onclick="@(async () => await ChangeStage(10))"><a>10. Update, Set</a></li>
+            <li @onclick="@(async () => await ChangeStage(11))"><a>11. Insert Into 2</a></li>
             <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
             <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
@@ -36,8 +36,8 @@
         <li @onclick="@(async () => await ChangeStage(7))"><a>7. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(8))"><a>8. Alter Again</a></li>
         <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table2</a></li>
-        <li @onclick="@(async () => await ChangeStage(10))"><a>10. Select *</a></li>
-        <li @onclick="@(async () => await ChangeStage(11))"><a>11. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(10))"><a>10. Update, Set</a></li>
+        <li @onclick="@(async () => await ChangeStage(11))"><a>11. Insert Into 2</a></li>
         <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
         <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
@@ -139,9 +139,9 @@
         "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (Crop, Amount, Worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
         "Let's now view our planted crops! Do so with the 'SELECT' keyword, then a 'a' which means all columns, then 'FROM' lastly the name of the table;",
         "We want to add a column to our table for the product of amount * worth to figure out how much our crops are worth. We can do this with 'ALTER TABLE crops' then 'ADD total int;'",
-        "Hello",
-        "Hello",
-        "Hello",
+        "Let's start preparing to sell our crops! first lets create a new table named sold, which takes a crop with datatype of varchar(20), and an int of total.",
+        "Now let's calculate the total value of our crops with the 'UPDATE' command, followed by the table name. Then use the 'SET command followed by the column you want to alter (total) set to = the product of the amount and worth columns'",
+        "It's time that we sell our crops! Let's insert from our crops column into our sold column.",
         "Hello",
         "Hello",
         "Hello",
@@ -161,7 +161,7 @@
         new string[] { "SELECT * FROM crops;" },
         new string[] { "ALTER TABLE crops", "ADD total int;" },
         new string[] { "CREATE TABLE sold (", "crop varchar(20),", "total int", ");" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "UPDATE crops", "SET total = amount * worth;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
         new string[] { "ALTER TABLE crops", "ADD worth int;" },
@@ -345,7 +345,23 @@
             break;
 
             case 10:
+                if (currentCommand[0].ToUpper().Contains("UPDATE") && 
+                    currentCommand[1].ToUpper().Contains("CROPS") && 
+                    currentCommand[2].ToUpper().Contains("SET") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("TOTAL")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("AMOUNT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("*")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("WORTH"))
 
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> Very good! The crops table now has a total column which is set to be the product of worth and amount columns!");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 11:
