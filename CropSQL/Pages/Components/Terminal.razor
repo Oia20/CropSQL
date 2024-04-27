@@ -67,12 +67,21 @@
     <h2>Prompt</h2>
 
     <p>@prompt[termNum - 1]</p>
+    <div class="flex-row">
     <h3>Example:</h3>
-    <div class="exampleCode">
+    <button class="copy-button" @onclick="CopyToClipboard">
+        <span>Copy Code</span>
+        <!-- You can use an icon here if you prefer -->
+        <!-- Example: <i class="fas fa-copy"></i> -->
+    </button>
+    </div>
+    <div class="exampleCode" @onclick="CopyToClipboard">
+
         @foreach (string lines in codeSample[termNum - 1])
         {
             <p class="code-line">@string.Join(" ", lines)</p>
         }
+
     </div>
     </div>
 </div>
@@ -94,6 +103,11 @@
     void ToggleDropdown()
     {
         isDropdownVisible = !isDropdownVisible;
+    }
+    private async Task CopyToClipboard()
+    {
+        var codeContent = string.Join("\n", codeSample[termNum - 1]);
+        await JSRuntime.InvokeVoidAsync("copyToClipboard", codeContent);
     }
     private void ButtonClicked() {
         AddCommand(currentInput);

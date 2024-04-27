@@ -34,6 +34,9 @@
             inputRef.value = ""
             return
         }
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text);
+        }
     </script>
     
 </body>

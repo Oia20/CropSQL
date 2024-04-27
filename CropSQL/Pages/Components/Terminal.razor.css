@@ -112,6 +112,8 @@ h2 {
 
 h3 {
     text-align: left;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -218,4 +220,29 @@ h3 {
 
 .code-line {
     text-align: left;
+}
+
+.copy-button {
+    bottom: 5px; /* Adjust the positioning as needed */
+    right: 5px; /* Adjust the positioning as needed */
+    padding: 5px 10px;
+    background-color: rgba(49, 87, 54, 0.664);
+    border: 2px solid #e8a073; /* Solid border */
+    border-radius: 20px;
+    color: #f4d35d;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 14px;
+}
+
+.copy-button:hover {
+    color:#f4d35d;
+    background-color: #e8a073;
+    border-color: rgba(49, 87, 54, 0.664);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
