@@ -124,12 +124,13 @@ h3 {
 
     left: 0;
     top:0;
-    height:100vh;
+    height:fit-content;
     width: 200px;
     background-color: rgb(49, 87, 54);
     color: #f4d35d;
-    padding-top: 20px;
     border-right: 2px solid #7cb16e; /* Solid border */
+    border-bottom: 2px solid #7cb16e; /* Solid border */
+
 }
 
 .sidebar ul {

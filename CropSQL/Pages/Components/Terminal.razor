@@ -15,10 +15,9 @@
             <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table 2</a></li>
             <li @onclick="@(async () => await ChangeStage(10))"><a>10. Update, Set</a></li>
             <li @onclick="@(async () => await ChangeStage(11))"><a>11. Insert Into 2</a></li>
-            <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
-            <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
-            <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
-            <li @onclick="@(async () => await ChangeStage(15))"><a>15. Select *</a></li>
+            <li @onclick="@(async () => await ChangeStage(12))"><a>12. Delete from</a></li>
+            <li @onclick="@(async () => await ChangeStage(13))"><a>13. Check</a></li>
+            <li @onclick="@(async () => await ChangeStage(14))"><a>14. Completed</a></li>
 
 
         </ul>
@@ -38,10 +37,9 @@
         <li @onclick="@(async () => await ChangeStage(9))"><a>9. Create Table2</a></li>
         <li @onclick="@(async () => await ChangeStage(10))"><a>10. Update, Set</a></li>
         <li @onclick="@(async () => await ChangeStage(11))"><a>11. Insert Into 2</a></li>
-        <li @onclick="@(async () => await ChangeStage(12))"><a>12. Select *</a></li>
-        <li @onclick="@(async () => await ChangeStage(13))"><a>13. Select *</a></li>
-        <li @onclick="@(async () => await ChangeStage(14))"><a>14. Select *</a></li>
-        <li @onclick="@(async () => await ChangeStage(15))"><a>15. Select *</a></li>
+        <li @onclick="@(async () => await ChangeStage(12))"><a>12. Delete from</a></li>
+        <li @onclick="@(async () => await ChangeStage(13))"><a>13. Check</a></li>
+        <li @onclick="@(async () => await ChangeStage(14))"><a>14. Completed</a></li>
 
 
     </ul>
@@ -147,20 +145,18 @@
         private List<string> prompt = new List<string>([
         "Let's start by creating your farm with 'CREATE DATABASE' followed by the name of our farm, lets name ours 'sqland', followed by a semi-colon don't forget the semi-colon, this is how sql knows where your command ends.",
         "We need to tell SQL which Database we are using, do this by saying 'USE' followed by our farm name.",
-        "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. This will make more sense later in the game, but for now, lets create a column named Crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an Amount column which takes and int, and a Word column which also takes an int.",
+        "You need a table to store the crops in your field. Create a table with 'CREATE TABLE' followed by the table name, we will name ours 'crops' then open a parentheses '('inside of your table you can specify columns, and what datatype goes into them. Let's create a column named crop with a data type of varchar(20) which is a word with a max of 20 characters. Then an amount column which takes an int, and a word column which also takes an int.",
         "Oops, it looks like we forgot to add a column for how much our Crops are worth! Not to worry, SQL gives us a command for that. 'ALTER TABLE tableName' followed by ADD columnName datatype",
         "Now lets look at our table! We do this with 'DESCRIBE' followed by the tables name",
-        "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (Crop, Amount, Worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
+        "Next it's time that we plant some crops. Let's start with the worst one of all, Carrots! in SQL we do this with the 'INSERT INTO' command followed by the table name. Then in parentheses we specify which columns we want to modify, in our case we want to modify all columns 'INSERT INTO Crops (crop, amount, worth)' Then we use the 'VALUES ()' command to insert into columns Let's plant carrot, 5, 2. Planting 5 carrots at a worth of 2.",
         "Let's now view our planted crops! Do so with the 'SELECT' keyword, then a 'a' which means all columns, then 'FROM' lastly the name of the table;",
         "We want to add a column to our table for the product of amount * worth to figure out how much our crops are worth. We can do this with 'ALTER TABLE crops' then 'ADD total int;'",
         "Let's start preparing to sell our crops! first lets create a new table named sold, which takes a crop with datatype of varchar(20), and an int of total.",
         "Now let's calculate the total value of our crops with the 'UPDATE' command, followed by the table name. Then use the 'SET command followed by the column you want to alter (total) set to = the product of the amount and worth columns'",
-        "It's time that we sell our crops! Let's insert from our crops column into our sold column.",
-        "Hello",
-        "Hello",
-        "Hello",
-        "Hello",
-        "Hello",
+        "It's time that we sell our carrots! Let's start by inserting them from our crops column into our sold column. Start with an 'INSERT INTO' then the table name you're inserting into so 'sold' then in parenthesis, list the columns names you want to insert into. For us that's the crop, and total columns. Next 'SELECT' those two columns 'FROM' the crops table 'WHERE' crop = 'carrot'.",
+        "To complete our carrot selling process we need to 'DELETE FROM' crops 'WHERE' crop = carrot.",
+        "We don't want to deal with carrots again... Let's add a 'CHECK'. First we need to 'ALTER TABLE' crops, then 'ADD CONSTRAINT' crop 'CHECK' (crop <> 'carrot') the '<>' means does not equal in sql.",
+        "Expansions possibly coming in the future!",
 
 
         ]);
@@ -176,12 +172,10 @@
         new string[] { "ALTER TABLE crops", "ADD total int;" },
         new string[] { "CREATE TABLE sold (", "crop varchar(20),", "total int", ");" },
         new string[] { "UPDATE crops", "SET total = amount * worth;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
-        new string[] { "ALTER TABLE crops", "ADD worth int;" },
+        new string[] { "INSERT INTO sold (crop, total)", "SELECT crop, total", "FROM crops", "WHERE crop = 'carrot';" },
+        new string[] { "DELETE FROM crops", "WHERE crop = 'carrot';" },
+        new string[] { "ALTER TABLE crops", "ADD CONSTRAINT crop CHECK (crop <> 'carrot');" },
+        new string[] { "Thank you much!", "For playing!", "You may fork and add to the game if you'd like!;"},
 
     };
     private void ExecuteCommand()
@@ -369,7 +363,7 @@
 
                     ) 
                 {
-                    terminalOutput.Add("CropSQL> Very good! The crops table now has a total column which is set to be the product of worth and amount columns!");
+                    terminalOutput.Add("CropSQL> Very good! The crops table now has a total column which is set to be the product of the worth and amount columns!");
                     termNum++;
                 } 
                 else 
@@ -379,23 +373,77 @@
             break;
 
             case 11:
+                if (currentCommand[0].ToUpper().Contains("INSERT") && 
+                    currentCommand[1].ToUpper().Contains("INTO") && 
+                    currentCommand[2].ToUpper().Contains("SOLD") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("TOTAL")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("FROM")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("CROP")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("'CARROT'")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(",")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("CROPS")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("SELECT")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("WHERE")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("(")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(")")) &&
 
+                    currentCommand.Any(s => s.ToUpper().Contains("="))
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> Phew! Carrots have now been inserted into the sold column!");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 12:
-
+                if (currentCommand[0].ToUpper().Contains("DELETE") && 
+                    currentCommand[1].ToUpper().Contains("FROM") && 
+                    currentCommand[2].ToUpper().Contains("CROPS") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("WHERE")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("CROP")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("=")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("'CARROT'"))
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> Finally! Those yucky carrots are out of our hands...");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 13:
+                if (currentCommand[0].ToUpper().Contains("ALTER") && 
+                    currentCommand[1].ToUpper().Contains("TABLE") && 
+                    currentCommand[2].ToUpper().Contains("CROPS") &&
+                    currentCommand[3].ToUpper().Contains("ADD") &&
+                    currentCommand[4].ToUpper().Contains("CONSTRAINT") &&
+                    currentCommand[5].ToUpper().Contains("CROP") &&
+                    currentCommand[6].ToUpper().Contains("CHECK") &&
+                    currentCommand.Any(s => s.ToUpper().Contains("<>")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("'CARROT'")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains(")")) &&
+                    currentCommand.Any(s => s.ToUpper().Contains("("))
 
+                    ) 
+                {
+                    terminalOutput.Add("CropSQL> Niceee! We won't be dealing with any more carrots!");
+                    termNum++;
+                } 
+                else 
+                {
+                    terminalOutput.Add("CropSQL> Incorrect Command");
+                }
             break;
 
             case 14:
-
-            break;
-
-            case 15:
-
+                    terminalOutput.Add("CropSQL> Thank you much for playing! I hope you learned a few things.");
             break;
         }
         StateHasChanged();
